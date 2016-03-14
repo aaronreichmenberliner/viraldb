@@ -1,4 +1,40 @@
 This is a clean, searchable, viral database based off of MongoDB.
+Currently only unix-based OSes are supported. (Linux, OSX)
+
+To create a database, the standard procedure would be:
+
+1) Install MongoDB.
+2) Start the Mongo server. (Run mongod in a separate terminal or in the background)
+3) Add data in to the database, by running these scripts:
+	python fetch_genbanks.py
+	python create-viraldb.py
+	python generate-indexes.py all clean short_clean
+	python vis.py
+	OR
+	run the script create.sh.
+
+INSTALLING MONGODB:
+https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+https://docs.mongodb.org/manual/installation/
+TLS/SSL support is not nessasary.
+
+
+To view data shape, go into the mongo shell (by running the command monogo) and run the commands:
+use viraldb
+db.all_data.findOne()
+db.all_indexes.findOne()
+
+Useful mongo shell commands:
+
+show dbs
+Shows the databases.
+
+use <db>
+Sets <db> as the active database.
+
+show collections
+Shows the collections in the active database.
+
 
 Description of files: Read each file for usage instructions.
 
@@ -17,15 +53,3 @@ viraldbhelpers.py
 vis.py
 	Some visualizations.
 
-To create a database, the standard procedure would be;
-python fetch_genbanks.py
-python create-viraldb.py
-python generate-indexes.py all clean short_clean
-python vis.py
-
-Note that these scripts expect a mongo server to be running.
-
-To view data shape, go into the mongo shell and run the commands:
-use viraldb
-db.all_data.findOne()
-db.all_indexes.findOne()
