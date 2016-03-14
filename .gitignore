@@ -1,0 +1,8 @@
+data/
+dbdump/
+dump/
+spec/
+*.log
+.DS_Store
+srcbu/
+src/__pycache__/
