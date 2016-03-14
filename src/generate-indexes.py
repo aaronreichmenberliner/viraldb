@@ -4,7 +4,7 @@ import sys
 #
 # Generates a data summary for a given table that follows the schema in schemas.txt.
 #
-# Arguments: A list of table classes to build indexes for.
+# Arguments: A list of groups to build indexes for.
 # Ex: To build a table for clean_data and all_data, the command should be:
 # python generate-indexes.py all clean
 #

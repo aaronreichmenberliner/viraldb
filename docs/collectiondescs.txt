@@ -1,0 +1,14 @@
+There are three groups by default:
+all, clean, short_clean.
+The collections containing a group's data has the name <group name>_data.
+Ex: all_data, clean_data, short_clean_data.
+
+clean_data is a subset of all_data with all valid baltimore classes.
+short_clean_data is the subset of clean_data with lengths below 10 000.
+
+The corresponding index will have <group name>_indexes.
+Ex: all_indexes, clean_indexes, short_clean_indexes.
+
+To create a custom group (That is a subset of all_data), modify this command:
+db.all_data.aggregate([ { $match: { date: "20120105" } }, { $out: "new_data" } ]);
+

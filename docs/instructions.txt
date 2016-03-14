@@ -18,6 +18,8 @@ https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
 https://docs.mongodb.org/manual/installation/
 TLS/SSL support is not nessasary.
 
+A tutorial on mongodb, in the case you want to directly query the database:
+https://docs.mongodb.org/manual/introduction/
 
 To view data shape, go into the mongo shell (by running the command monogo) and run the commands:
 use viraldb
