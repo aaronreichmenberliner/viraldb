@@ -1,0 +1,38 @@
+NUPACK INSTRUCTIONS
+
+SETUP
+Set up ssh keys between:
+	local computer and a host computer,
+	host computer and computer computers.
+Set the env variable MASTER=<user>@<ip>
+
+Copy the main viral-db folder to a separate computer 
+	(Assuming you don't want to keep your local computer running for days!)
+
+Make the file IP_list.txt in the params folder on MASTER. (Create the folder and file if not there.)
+	Each line should be a single entry for a given compute node, with the following format:
+	<# cores>/<user>@<ip>
+	Example:
+	8/administrator@1.1.1.1
+	16/administrator@1.2.1.1
+
+run setup-nupack-slave.sh. It takes a list of compute nodes, input with the form <user>@<ip>
+
+EXECUTION:
+on the local computer (The one with the database), run generate_nupack_files.py.
+On the master node, run run_nupack.py.
+	Recommended you do this with the screen command.
+
+When that finishes, run parse-nupack-res.py on the local computer.
+
+That should leave a new collection in the database, called nupack. Will be joined into the main dataset later.
+
+USING SCREEN:
+Screen is a command line tool to have virtual terminal sessions, so you can close it and resume it later.
+How to use:
+$ screen
+> This opens an interface equivalent to the regular terminal. Run the commands here, like run_nupack.py
+> To 'detach' from the screen and return to the regular terminal, press ctrl+a , then d.
+
+$ screen -r
+> This reattaches to the screen that has been detached, resuming the session and viewing the previous output.

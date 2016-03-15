@@ -3,7 +3,7 @@ Currently only unix-based OSes are supported. (Linux, OSX)
 
 To create a database, the standard procedure would be:
 
-1) Install MongoDB.
+1) Install MongoDB and pymongo.
 2) Start the Mongo server. (Run mongod in a separate terminal or in the background)
 3) Add data in to the database, by running these scripts:
 	python fetch_genbanks.py
@@ -20,6 +20,9 @@ TLS/SSL support is not nessasary.
 
 A tutorial on mongodb, in the case you want to directly query the database:
 https://docs.mongodb.org/manual/introduction/
+
+INSTALLING PYMONGO:
+http://api.mongodb.org/python/current/installation.html
 
 To view data shape, go into the mongo shell (by running the command monogo) and run the commands:
 use viraldb
