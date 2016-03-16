@@ -9,11 +9,7 @@ import sys
 # Based off of the baltimore type if not explicit in the molecule type.
 def classifyStrandedness(mol_type, baltimore, taxonomy):
 	taxonomy = list(map(lambda x:x.lower().replace('-', ' '), taxonomy))
-	if 'ss' in mol_type:
-		return 1
-	elif 'ds' in mol_type:
-		return 2
-	elif baltimore in [1,3,7]:
+	if baltimore in [1,3,7]:
 		return 2
 	elif baltimore in [2,4,5,6]:
 		return 1
@@ -43,12 +39,13 @@ def getBaltimoreClass(mol_type, taxonomy, locus, err=sys.stderr, warn=sys.stderr
 
 	#Retro transcribing viruses.
 	if any(map(lambda x: "retro" in x, taxonomy)):
-		if 'rna' in mol_type:
+		if any(map(lambda x: "retroviridae" in x, taxonomy)):
 			return 6
-		elif 'dna' in mol_type:
+		elif any(map(lambda x: "hepadnaviridae" in x or "caulimoviridae" in x, taxonomy)):
 			return 7
 		else:
-			print ("Error in inferring baltimore class.")
+			print ("Error in inferring retroviral baltimore class.")
+			print (taxonomy)
 			err.write("Error in inferring baltimore class. Is retroviral.\n")
 			err.write("Molecule type: %s, taxonomy: %s\n" % (mol_type, taxonomy))
 			err.write("Locus: %s\n" % locus)

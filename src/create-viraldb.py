@@ -61,18 +61,11 @@ try:
 		data['baltimore'] = baltimore_class
 		
 		data['taxonomy'] = dict(zip(map(str, range(len(taxonomy))), taxonomy))
+		# data['taxonomy'] = list(map(str, taxonomy))
 	
 		data['locus'] = tokens[1]
 		data['length'] = int(tokens[2])
-		data['original_molecule_type'] = tokens[4]
-
-		data['strands'] = classifyStrandedness(data['original_molecule_type'], data['baltimore'], taxonomy)
-		if data['original_molecule_type'].lower() == 'dna':
-			data['molecule_type'] = 'ss-DNA' if data['strands'] == 1 else 'ds-DNA' if data['strands'] == 2 else 'Undetermined DNA'
-		elif data['original_molecule_type'].lower() == 'rna':
-			data['molecule_type'] = 'ss-RNA' if data['strands'] == 1 else 'ds-RNA' if data['strands'] == 2 else 'Undetermined RNA'
-		else:
-			data['molecule_type'] = data['original_molecule_type']
+		data['sequenced_mol'] = tokens[4]
 
 		data['morphology'] = tokens[5]
 		data['gb_division'] = genome.annotations['data_file_division']
