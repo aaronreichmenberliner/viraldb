@@ -38,7 +38,7 @@ for collection in sys.argv[1:]:
 
 
 	new_indexes = {}
-	for field in ['baltimore', 'sequenced_mol', 'morphology', 'gb_division', 'strands', 'original_molecule_type']:
+	for field in ['baltimore', 'sequenced_mol', 'morphology', 'gb_division']:
 		new_indexes[field] = {}
 		keys = db[collection_data].distinct(field) #Builds a entry for each distinct key.
 
